@@ -4,7 +4,9 @@ import HomePage from './pages/HomePage.jsx';
 import ServiceDetailPage from './pages/ServiceDetailsPage.jsx';
 import ConfirmationPage from '/src/pages/ConfirmationPage.jsx';
 import DashboardPage from '/src/pages/DashboardPage.jsx';
-import { BookingProvider } from './context/BookingContext.jsx'; // Import provider
+import SignupPage from './pages/SignupPage.jsx';
+import SigninPage from './pages/SigninPage.jsx';
+import { BookingProvider } from './context/BookingContext.jsx';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             <Route path="service/:id" element={<ServiceDetailPage />} />
             <Route path="confirmation" element={<ConfirmationPage />} />
             <Route path="dashboard" element={<DashboardPage />} />
+            <Route path="signup" element={<SignupPage />} />
+            <Route path="signin" element={<SigninPage />} />
           </Route>
         </Routes>
       </Router>
