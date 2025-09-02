@@ -20,23 +20,23 @@ This project demonstrates clean UI design, proper state management, and REST API
 ## 🖥️ Screenshots
 
 ### 🔑 Authentication
-![SignUp Page](./public/Screenshot (85).png)  
-![SignIn Page](./public/Screenshot (86).png)  
+![SignUp Page](./public/Screenshot(85).png)  
+![SignIn Page](./public/Screenshot(86).png)  
 
 ### 🏠 Home
-![Home1 Page](./public/Screenshot (87).png)  
-![Home2 Page](./public/Screenshot (88).png)  
+![Home1 Page](./public/Screenshot(87).png)  
+![Home2 Page](./public/Screenshot(88).png)  
 
 ### 📊 Dashboard
-![Dashboard Page](./public/Screenshot (89).png)  
+![Dashboard Page](./public/Screenshot(89).png)  
 
 ### 🛎️ Services & Booking
-![Service Page](./public/Screenshot (90).png)  
-![Confirmation Page](./public/Screenshot (91).png)  
+![Service Page](./public/Screenshot(90).png)  
+![Confirmation Page](./public/Screenshot(91).png)  
 
 ### 🗄️ Database (MongoDB)
-![Database Of User](./public/Screenshot (92).png)  
-![Database of Bookings](./public/Screenshot (93).png)  
+![Database Of User](./public/Screenshot(92).png)  
+![Database of Bookings](./public/Screenshot(93).png)  
 
 ---
 
