@@ -11,49 +11,50 @@ const SigninPage = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     setError('');
-    try {
-      const res = await fetch('http://localhost:5000/api/auth/signin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (res.ok) {
-        // You can store token in localStorage if needed: localStorage.setItem('token', data.token);
-        navigate('/');
-      } else {
-        setError(data.error || 'Signin failed');
-      }
-    } catch {
-      setError('Signin failed');
-    }
+    // Simulate successful signin and save user info
+    const userData = { name: form.email.split('@')[0], email: form.email }; // Example: use email prefix as name
+    localStorage.setItem('user', JSON.stringify(userData));
+    navigate('/');
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 rounded shadow">
-      <h2 className="text-2xl font-bold mb-4">Sign In</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-          className="w-full p-2 border rounded"
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          required
-          className="w-full p-2 border rounded"
-        />
-        {error && <div className="text-red-500">{error}</div>}
-        <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">Sign In</button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-blue-100 px-4">
+      <div className="max-w-md w-full bg-white p-10 rounded-3xl shadow-2xl border border-blue-100">
+        <h2 className="text-3xl font-extrabold mb-6 text-blue-700 text-center tracking-tight">Welcome Back</h2>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <input
+            name="email"
+            type="email"
+            placeholder="Email Address"
+            value={form.email}
+            onChange={handleChange}
+            required
+            className="w-full p-4 border-2 border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent transition text-lg"
+          />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={form.password}
+            onChange={handleChange}
+            required
+            className="w-full p-4 border-2 border-blue-200 rounded-xl focus:ring-2 focus:ring-blue-400 focus:border-transparent transition text-lg"
+          />
+          {error && <div className="text-red-500 text-center font-semibold">{error}</div>}
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold py-3 px-8 rounded-xl shadow-lg hover:from-blue-700 hover:to-blue-600 hover:scale-105 transition duration-300 text-lg"
+          >
+            Sign In
+          </button>
+        </form>
+        <div className="mt-6 text-center text-gray-600">
+          Don't have an account?{' '}
+          <a href="/signup" className="text-blue-600 font-semibold hover:underline">
+            Sign Up
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
