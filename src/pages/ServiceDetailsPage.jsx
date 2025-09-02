@@ -27,9 +27,24 @@ const ServiceDetailPage = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addBooking({ ...service, userInfo: form });
+    const user = JSON.parse(localStorage.getItem('user'));
+    const bookingData = {
+      serviceId: service.id,
+      serviceName: service.name,
+      user: {
+        name: user.name,
+        email: user.email
+      },
+      details: form // address, phone, etc.
+    };
+    await fetch('http://localhost:5000/api/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(bookingData)
+    });
+    addBooking({ ...service, userInfo: form }); // still add to frontend context if needed
     navigate('/confirmation');
   };
 
