@@ -2,7 +2,7 @@ import { useBookings } from '/src/context/BookingContext.jsx';
 import { Link } from 'react-router-dom';
 
 const DashboardPage = () => {
-  const { bookedServices, removeBooking } = useBookings(); // Add removeBooking
+  const { bookedServices, removeBooking } = useBookings();
 
   return (
     <div>
@@ -16,6 +16,14 @@ const DashboardPage = () => {
                 <div>
                   <h3 className="text-xl font-semibold text-gray-800">{service.name}</h3>
                   <p className="text-gray-500">{service.category}</p>
+                  {service.userInfo && (
+                    <div className="mt-2 text-sm text-gray-700">
+                      <div><span className="font-semibold">Name:</span> {service.userInfo.name}</div>
+                      <div><span className="font-semibold">Email:</span> {service.userInfo.email}</div>
+                      <div><span className="font-semibold">Phone:</span> {service.userInfo.phone}</div>
+                      <div><span className="font-semibold">Address:</span> {service.userInfo.address}</div>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="flex flex-col items-end">
