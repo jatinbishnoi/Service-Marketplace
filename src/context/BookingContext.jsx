@@ -8,13 +8,17 @@ export const BookingProvider = ({ children }) => {
   const [bookedServices, setBookedServices] = useState([]);
 
   const addBooking = (service) => {
-    // Add a unique timestamp-based key to handle multiple bookings of the same service
-    const newBooking = { ...service, bookingId: Date.now() };
+    // Use a truly unique id for each booking
+    const newBooking = { ...service, bookingId: crypto.randomUUID ? crypto.randomUUID() : Date.now() + Math.random() };
     setBookedServices(prev => [...prev, newBooking]);
   };
 
+  const removeBooking = (bookingId) => {
+    setBookedServices(prev => prev.filter(service => service.bookingId !== bookingId));
+  };
+
   return (
-    <BookingContext.Provider value={{ bookedServices, addBooking }}>
+    <BookingContext.Provider value={{ bookedServices, addBooking, removeBooking }}>
       {children}
     </BookingContext.Provider>
   );

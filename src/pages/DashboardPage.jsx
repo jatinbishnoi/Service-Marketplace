@@ -2,7 +2,7 @@ import { useBookings } from '/src/context/BookingContext.jsx';
 import { Link } from 'react-router-dom';
 
 const DashboardPage = () => {
-  const { bookedServices } = useBookings();
+  const { bookedServices, removeBooking } = useBookings(); // Add removeBooking
 
   return (
     <div>
@@ -18,7 +18,15 @@ const DashboardPage = () => {
                   <p className="text-gray-500">{service.category}</p>
                 </div>
               </div>
-              <p className="text-2xl font-bold text-blue-600">${service.price}</p>
+              <div className="flex flex-col items-end">
+                <p className="text-2xl font-bold text-blue-600 mb-2">${service.price}</p>
+                <button
+                  onClick={() => removeBooking(service.bookingId)}
+                  className="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition"
+                >
+                  Remove
+                </button>
+              </div>
             </div>
           ))}
         </div>
